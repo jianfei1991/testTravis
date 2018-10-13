@@ -10,19 +10,22 @@ before_script:
 script:
 - npm run build
 after_script:
-- cd ./dist
-- git init
-- git config user.name "${U_NAME}"
-- git config user.email "${U_EMAIL}"
-- git add .
-- git commit -m "Update tools"
-- git push --force --quiet "https://7de169fb0ef8170368329b4302d19d2c02d520fb@github.com/jianfei1991/testTravis"
-  master:master
+- cd travis
+- touch a.js
+# - git init
+# - git config user.name "${U_NAME}"
+# - git config user.email "${U_EMAIL}"
+# - git add .
+# - git commit -m "Update tools"
+# - git push --force --quiet "https://7de169fb0ef8170368329b4302d19d2c02d520fb@github.com/jianfei1991/testTravis"
+#   master:master
 branches:
   only:
   - master
 env:
   global: 
 before_install:
+- openssl aes-256-cbc -K $encrypted_6554990e58da_key -iv $encrypted_6554990e58da_iv
+  -in xianggang.enc -out ~\/.ssh/xianggang -d
 - openssl aes-256-cbc -K $encrypted_6554990e58da_key -iv $encrypted_6554990e58da_iv
   -in id_rsa.enc -out ~\/.ssh/id_rsa -d
